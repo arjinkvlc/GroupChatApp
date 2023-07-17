@@ -133,7 +133,7 @@ class MessageListAdapter(
         val myRef=database.getReference("GroupChats")
 
         if (message != null) {
-            myRef.child(message.uniqueKey).child("message").setValue("Mesaj Silindi")
+            myRef.child(message.uniqueKey).child("message").setValue("Mesaj Silindi!")
             notifyDataSetChanged()
         }
     }
