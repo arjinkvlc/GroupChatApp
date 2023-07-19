@@ -1,5 +1,6 @@
 package com.sample.firebaseapp.chat.adapter
 
+import android.content.Context
 import android.content.Intent
 import android.util.Log
 import android.view.LayoutInflater
@@ -69,7 +70,7 @@ class MessageListAdapter(
                 holder.bind(message)
                 //Deleting a message
                 holder.binding.messageTextContainer.setOnLongClickListener {
-                    deleteMessage(message)
+                    Toast.makeText(holder.itemView.context,"Bu mesajı yalnızca sahibi silebilir",Toast.LENGTH_SHORT).show()
                     true
                 }
                 //Navigating profile details

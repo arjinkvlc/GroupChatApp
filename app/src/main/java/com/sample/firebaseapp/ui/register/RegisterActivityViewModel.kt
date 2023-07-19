@@ -88,7 +88,7 @@ class RegisterViewModel(application: Application) : AndroidViewModel(application
 
     private fun saveUserToDatabase(requestListener: RequestListener) {
         userModel = UserModel(name, surName, userId, "")
-        databaseReference.child("Users").child(userId ?: "")
+        databaseReference.child("Users").child((name + surName) ?: "")
             .setValue(userModel)
             .addOnCompleteListener { task ->
                 if (task.isSuccessful) {

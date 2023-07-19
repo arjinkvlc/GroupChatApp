@@ -43,9 +43,7 @@ class ProfilePage : AppCompatActivity() {
             binding.nameOnprofileTextview.text = name
 
             Log.d("denemeuser3",userModel?.userId.toString())
-            //Firebase Users icinde kullanıcı imageUrl güncelleme
-            Firebase.database.getReference("Users").child(userModel?.userId.toString()).child("imageUrl").setValue(imageUri.toString())
-            userModel?.imageUrl=imageUri.toString()
+
         }
 
         binding.backButton.setOnClickListener() {
@@ -58,17 +56,16 @@ class ProfilePage : AppCompatActivity() {
     }
     override fun onResume() {
         super.onResume()
-        if (isOwner==true) {
-            binding.editProfileimageButton.setOnClickListener() {
+        if (isOwner) {
                 editProfilePhoto()
-            }
             storageReference = FirebaseStorage.getInstance().getReference("images/$username")
+            storageReference.putFile(imageUri).addOnSuccessListener {
+                loadProfileImage()
+            }
 
-            storageReference.putFile(imageUri)
         }else{
             binding.editProfileimageButton.isVisible=false
         }
-
 
         storageReference.downloadUrl.addOnSuccessListener(){ uri ->
             Glide
@@ -94,6 +91,17 @@ class ProfilePage : AppCompatActivity() {
     fun editProfilePhoto() {
         binding.editProfileimageButton.setOnClickListener() {
             galleryLauncher.launch("image/*")
+        }
+    }
+    private fun loadProfileImage() {
+        storageReference.downloadUrl.addOnSuccessListener { uri ->
+            Glide.with(this)
+                .load(uri)
+                .centerCrop()
+                .into(binding.profileImage)
+            Log.d("ProfilePageTest", uri.toString())
+        }.addOnFailureListener { exception ->
+            Log.e("ProfilePageTest", "Resim indirme hatası: $exception")
         }
     }
 
