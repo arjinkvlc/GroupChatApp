@@ -7,7 +7,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
-import com.sample.firebaseapp.ProfilePage
+import com.sample.firebaseapp.ProfilePageActivity
 import com.sample.firebaseapp.chat.viewholder.MessageListReceiverViewHolder
 import com.sample.firebaseapp.chat.viewholder.MessageListSenderViewHolder
 import com.sample.firebaseapp.databinding.LayoutMessageReceiverBinding
@@ -72,7 +72,7 @@ class MessageListAdapter(
                         if (holder.binding.userNameTextView.text==userModel?.name){
                             isOwner=true
                         }
-                        val intent= Intent(holder.itemView.context,ProfilePage::class.java).apply {
+                        val intent= Intent(holder.itemView.context,ProfilePageActivity::class.java).apply {
                             putExtra("username",holder.binding.userNameTextView.text)
                             putExtra("isOwner",isOwner)
                         }
@@ -95,7 +95,7 @@ class MessageListAdapter(
                         if (holder.binding.userNameTextView.text==userModel?.name){
                             isOwner=true
                         }
-                        val intent= Intent(holder.itemView.context,ProfilePage::class.java).apply {
+                        val intent= Intent(holder.itemView.context,ProfilePageActivity::class.java).apply {
                             putExtra("username",holder.binding.userNameTextView.text)
                             putExtra("isOwner",isOwner)
                         }
