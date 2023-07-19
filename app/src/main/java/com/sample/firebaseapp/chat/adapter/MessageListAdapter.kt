@@ -1,21 +1,13 @@
 package com.sample.firebaseapp.chat.adapter
 
-import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
 import android.widget.Toast
-import androidx.cardview.widget.CardView
-import androidx.core.content.ContextCompat.startActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.sample.firebaseapp.ProfilePage
-import com.sample.firebaseapp.R
-import com.sample.firebaseapp.chat.ui.GroupChatActivity
 import com.sample.firebaseapp.chat.viewholder.MessageListReceiverViewHolder
 import com.sample.firebaseapp.chat.viewholder.MessageListSenderViewHolder
 import com.sample.firebaseapp.databinding.LayoutMessageReceiverBinding
